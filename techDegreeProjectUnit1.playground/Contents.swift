@@ -104,13 +104,13 @@ inexperiencedPlayers.count
 //distributing the players with experience and without experience between all 3 teams evenly
 
 for expTeamMembers in experiencedPlayers {
-    if teamSharks.count < maxExperiencedPlayers {
+    if teamSharks.count < teamRaptors.count {
         teamSharks.append(expTeamMembers)
         
-    } else if teamDragons.count < maxExperiencedPlayers {
+    } else if teamDragons.count < teamSharks.count {
         teamDragons.append(expTeamMembers)
         
-    } else if teamRaptors.count < maxExperiencedPlayers {
+    } else {
         teamRaptors.append(expTeamMembers)
     }
 }
@@ -123,13 +123,13 @@ teamRaptors.count
 //maxInexperiencedPlayers + maxExperiencedPlayers is necessary otherwise this for loop wouldn't execute because there are already 3 players grouped on each team at this point (as seen in the teamSharks.count) using the addition operator allows for the full team amount of 6 players to each team, which are composed of both experienced players and inexperienced players
 
 for inexpTeamMembers in inexperiencedPlayers {
-    if teamSharks.count < maxInexperiencedPlayers + maxExperiencedPlayers {
+    if teamSharks.count < teamRaptors.count {
         teamSharks.append(inexpTeamMembers)
         
-    } else if teamDragons.count < maxInexperiencedPlayers + maxExperiencedPlayers {
+    } else if teamDragons.count < teamSharks.count {
         teamDragons.append(inexpTeamMembers)
         
-    } else if teamRaptors.count < maxInexperiencedPlayers + maxExperiencedPlayers {
+    } else {
         teamRaptors.append(inexpTeamMembers)
     }
     
@@ -150,7 +150,7 @@ let teamRaptorsPractice = "March 18, 1pm"
 
 //creating a variable to hold all of the teams' letters
 
-var leagueLetters: [[String]] = []
+var leagueLetters: [String] = []
 
 
 //creating a variable for each individual team
@@ -200,16 +200,19 @@ teamRaptorsLetters.count
 
 //adding the team letters to the letters for the league
 
-leagueLetters = [teamDragonsLetters + teamSharkLetters + teamSharkLetters]
+leagueLetters = teamDragonsLetters + teamSharkLetters + teamSharkLetters
 
 
 // printing each individual letter seperately
 
-for i in leagueLetters {
-    print(i)
+
+func printLetters() {
+    for i in leagueLetters {
+        print(i)
+    }
 }
 
-
+printLetters()
 
 //END
 
